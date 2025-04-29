@@ -126,7 +126,7 @@ class Event
      */
     protected function eventTypeToHandler($eventType)
     {
-        $eventParts = explode('.', $eventType);
+        $eventParts = explode('.', $eventType ?? '');
         foreach ($eventParts as $key => $eventPart) {
             if (!$key) {
                 $eventParts[$key] = strtolower($eventPart);

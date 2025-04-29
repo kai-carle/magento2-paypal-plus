@@ -67,7 +67,7 @@ class Group
             if ($thirdPartyModuls = $this->helper->getPaymentThirdPartyModuls()) {
                 $activePaymentMethods = $this->paymentConfig->getActiveMethods();
                 $path = "payment/iways_paypalplus_section/third_party_modul_info";
-                foreach (explode(',', $thirdPartyModuls) as $key => $value) {
+                foreach (explode(',', $thirdPartyModuls ?? '') as $key => $value) {
                     if (isset($activePaymentMethods[$value])) {
                         $paymentMethod = $activePaymentMethods[$value];
 

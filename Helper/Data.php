@@ -290,7 +290,7 @@ class Data extends \Magento\Payment\Helper\Data
      */
     public function convertDueDate($date)
     {
-        $dateArray = explode('-', $date);
+        $dateArray = explode('-', $date ?? '');
         $dateArray = array_reverse($dateArray);
         return implode('.', $dateArray);
     }

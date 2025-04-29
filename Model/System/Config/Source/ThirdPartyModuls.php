@@ -66,7 +66,7 @@ class ThirdPartyModuls implements \Magento\Framework\Option\ArrayInterface
         $methods = [['value' => '', 'label' => __('--Please Select--')]];
 
         foreach ($payments as $paymentCode => $paymentModel) {
-            if (strpos($paymentCode, 'paypal') !== false) {
+            if (str_contains($paymentCode, 'paypal') !== false) {
                 continue;
             }
 

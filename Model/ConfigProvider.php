@@ -224,11 +224,11 @@ class ConfigProvider implements ConfigProviderInterface
             $this->scopeConfig->getValue(
                 'payment/iways_paypalplus_payment/third_party_moduls',
                 \Magento\Store\Model\ScopeInterface::SCOPE_STORE
-            )
+            ) ?? ''
         );
         $methods = [];
         foreach ($paymentMethods as $paymentMethod) {
-            if (strpos($paymentMethod->getCode(), 'paypal') === false
+            if (str_contains($paymentMethod->getCode(), 'paypal') === false
                 && in_array($paymentMethod->getCode(), $allowedPPPMethods)
             ) {
                 if ($methodImage = $this->scopeConfig->getValue(
@@ -236,7 +236,7 @@ class ConfigProvider implements ConfigProviderInterface
                     \Magento\Store\Model\ScopeInterface::SCOPE_STORE
                 )
                 ) {
-                    if (substr($methodImage, 0, 4) != 'http') {
+                    if (!str_starts_with($methodImage, 'http')) {
                         $methodImage = $this->assetRepo->getUrl($methodImage);
                     }
                 }
